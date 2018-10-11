@@ -3,7 +3,7 @@
 set -x
 set -e
 
-docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
+echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 
 find ./ -maxdepth 1 \! -name ".git" \! -name "." -type d -printf "%P\\n" | \
 while read -r dir

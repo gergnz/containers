@@ -2,7 +2,7 @@ FROM ubuntu:18.04
 
 RUN apt-get update && apt-get upgrade -y
 
-RUN apt-get install -y packer ansible curl wget python-pip git
+RUN apt-get install -y packer ansible curl wget python-pip git jq
 
 RUN pip install awscli
 

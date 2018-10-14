@@ -20,5 +20,4 @@ USER ${user}
 ENTRYPOINT ["/sbin/tini", "--", "/usr/local/bin/caddy-jenkins.sh"]
 
 # Cleanup
-RUN DEBIAN_FRONTEND=noninteractive apt-get purge -y build-essential
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*

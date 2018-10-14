@@ -1,9 +1,13 @@
 FROM ubuntu:18.04
+MAINTAINER Greg Cockburn, gergnz@gmail.com
 
-RUN apt-get update && apt-get install -y \
+RUN DEBIAN_FRONTEND=noninteractive apt-get -qq update
+RUN DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y apt-utils
+RUN DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y \
     openssh-server \
     python \
     python-pip \
+    python-setuptools \
     curl \
     rsyslog \
     && \
@@ -26,3 +30,7 @@ EXPOSE 2200
 ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
 
 CMD ["/usr/sbin/sshd", "-D", "-e"]
+
+# Cleanup
+RUN DEBIAN_FRONTEND=noninteractive apt-get purge -y build-essential
+RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*

@@ -1,4 +1,5 @@
 FROM jenkins/jenkins:lts
+MAINTAINER Greg Cockburn, gergnz@gmail.com
 
 ARG CADDY_VERSION=0.11.0
 
@@ -17,3 +18,7 @@ COPY caddy-jenkins.sh /usr/local/bin/caddy-jenkins.sh
 USER ${user}
 
 ENTRYPOINT ["/sbin/tini", "--", "/usr/local/bin/caddy-jenkins.sh"]
+
+# Cleanup
+RUN DEBIAN_FRONTEND=noninteractive apt-get purge -y build-essential
+RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*

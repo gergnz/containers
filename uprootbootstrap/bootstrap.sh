@@ -17,6 +17,8 @@ echo 'tags="queue=docker"' > /efs/shared/build-kite/buildkite-agent.cfg
 mkdir -p /efs/shared/build-kite/buildkite-secrets/pxadmin/urbis_pro_support_infra
 aws --region "$region" ssm get-parameter --name /pxadmin/urbis_pro_support_infra/access-key --output text --query 'Parameter.Value' --with-decryption | base64 -d > /efs/shared/build-kite/buildkite-secrets/pxadmin/urbis_pro_support_infra/access-key
 
+chmod 600 /efs/shared/build-kite/buildkite-secrets/pxadmin/urbis_pro_support_infra/access-key
+
 mkdir -p /efs/shared/build-kite/hooks
 cat > /efs/shared/build-kite/hooks/environment <<EOF
 #!/bin/bash

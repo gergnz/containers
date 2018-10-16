@@ -1,7 +1,6 @@
 #! /usr/bin/bash
 
 set -e
-set -x
 
 region=$(curl -s http://169.254.169.254/latest/meta-data/placement/availability-zone | sed 's/.$//')
 

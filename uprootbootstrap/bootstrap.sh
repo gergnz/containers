@@ -23,7 +23,7 @@ cat > /efs/shared/build-kite/hooks/environment <<EOF
 
 set -euo pipefail
 
-eval "$(ssh-agent -s)"
+eval "\$(ssh-agent -s)"
 ssh-add -k /buildkite-secrets/pxadmin/urbis_pro_support_infra
 EOF
 

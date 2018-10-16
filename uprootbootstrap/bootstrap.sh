@@ -1,4 +1,7 @@
-#! /bin/bash -e
+#! /usr/bin/bash
+
+set -e
+set -x
 
 region=$(curl -s http://169.254.169.254/latest/meta-data/placement/availability-zone | sed 's/.$//')
 
@@ -26,7 +29,7 @@ cat > /efs/shared/build-kite/hooks/environment <<EOF
 set -euo pipefail
 
 eval "\$(ssh-agent -s)"
-ssh-add -k /buildkite-secrets/pxadmin/urbis_pro_support_infra
+ssh-add -k /buildkite-secrets/pxadmin/urbis_pro_support_infra/access-key
 EOF
 
 chmod +x /efs/shared/build-kite/hooks/environment

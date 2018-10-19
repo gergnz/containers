@@ -15,6 +15,11 @@ COPY Caddyfile /etc/caddy/Caddyfile
 
 COPY caddy-jenkins.sh /usr/local/bin/caddy-jenkins.sh
 
+RUN DEBIAN_FRONTEND=noninteractive apt-get -qq update
+RUN DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y apt-utils
+RUN DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y python-pip python-setuptools\
+&& pip install wheel && pip install awscli
+
 USER ${user}
 
 ENTRYPOINT ["/sbin/tini", "--", "/usr/local/bin/caddy-jenkins.sh"]

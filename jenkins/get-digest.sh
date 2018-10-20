@@ -59,7 +59,7 @@ get_digest() {
     --header "Accept: application/vnd.docker.distribution.manifest.v2+json" \
     --header "Authorization: Bearer $token" \
     "https://$REGISTRY_ADDRESS/v2/$image/manifests/$tag" \
-    | openssl sha256
+    | openssl sha256  | awk '{print $NF}'
 }
 
 # Run the entry point with the CLI arguments

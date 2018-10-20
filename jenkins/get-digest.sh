@@ -4,7 +4,7 @@ set -o errexit
 
 readonly REGISTRY_ADDRESS="${REGISTRY_ADDRESS:-registry-1.docker.io}"
 readonly DOCKER_USERNAME="${DOCKER_USERNAME:-}"
-readonly DOCKER_PASSWORD="${DOCER_PASSWORD:-}"
+readonly DOCKER_PASSWORD="${DOCKER_PASSWORD:-}"
 
 main() {
   check_args "$@"
@@ -59,7 +59,7 @@ get_digest() {
     --header "Accept: application/vnd.docker.distribution.manifest.v2+json" \
     --header "Authorization: Bearer $token" \
     "https://$REGISTRY_ADDRESS/v2/$image/manifests/$tag" \
-    | sha256sum
+    | openssl sha256
 }
 
 # Run the entry point with the CLI arguments

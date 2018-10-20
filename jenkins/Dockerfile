@@ -14,10 +14,11 @@ RUN mkdir -p /etc/caddy
 COPY Caddyfile /etc/caddy/Caddyfile
 
 COPY caddy-jenkins.sh /usr/local/bin/caddy-jenkins.sh
+COPY get-digest.sh /usr/local/bin/get-digest.sh
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get -qq update
 RUN DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y apt-utils
-RUN DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y python-pip python-setuptools\
+RUN DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y python-pip python-setuptools jq \
 && pip install wheel && pip install awscli
 
 USER ${user}

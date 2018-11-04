@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+/usr/local/bin/tagswapper.sh
+
 /opt/codedeploy-agent/bin/codedeploy-agent start
 
 while sleep 60; do

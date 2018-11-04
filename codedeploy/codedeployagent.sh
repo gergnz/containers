@@ -2,9 +2,8 @@
 
 /usr/local/bin/tagswapper.sh
 
-tail -f /var/log/aws/codedeploy-agent/codedeploy-agent.log &
-
 /opt/codedeploy-agent/bin/codedeploy-agent start
+tail -F /var/log/aws/codedeploy-agent/codedeploy-agent.log &
 
 while sleep 60; do
   ps -o pid,cmd | grep "codedeploy-agent: master" | grep -q -v grep

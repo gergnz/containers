@@ -2,6 +2,8 @@
 
 /usr/local/bin/tagswapper.sh
 
+tail -f /var/log/aws/codedeploy-agent/codedeploy-agent.log &
+
 /opt/codedeploy-agent/bin/codedeploy-agent start
 
 while sleep 60; do

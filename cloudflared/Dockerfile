@@ -4,7 +4,6 @@ MAINTAINER Greg Cockburn, gergnz@gmail.com
 RUN apt-get update && \
     apt-get full-upgrade --yes && \
     apt-get install -y ca-certificates && \
-    dpkg -i /cloudflare.deb && \
     apt-get install -f && \
     apt-get autoclean --yes && \
     apt-get clean --yes

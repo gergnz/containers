@@ -7,4 +7,4 @@ COPY config.yaml /config.yaml
 EXPOSE 53/tcp
 EXPOSE 53/udp
 
-CMD ["/cloudflared", "--config", "/config.yaml", "proxy-dns"]
+CMD ["/cloudflared", "--config", "/config.yaml", "proxy-dns", "--address 0.0.0.0"]

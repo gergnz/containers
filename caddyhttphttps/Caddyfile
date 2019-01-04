@@ -1,6 +1,0 @@
-http://:2015 {
-  redir 302 {
-    /  https://{host}{uri}
-  }
-  errors stdout
-}

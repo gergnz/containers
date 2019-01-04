@@ -1,0 +1,10 @@
+*:8090 {
+  proxy / localhost:8080 {
+    max_fails 1
+    header_upstream Host {host}
+    header_upstream X-Real-IP {>X-Forwarded-For}
+    header_upstream X-Forwarded-For {>X-Forwarded-For}
+    header_upstream X-Forwarded-Proto {>X-Forwarded-Proto}
+    header_upstream X-Forwarded-Port {>X-Forwarded-Port}
+  }
+}

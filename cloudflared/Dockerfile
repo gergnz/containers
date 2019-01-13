@@ -3,12 +3,14 @@ MAINTAINER Greg Cockburn, gergnz@gmail.com
 
 RUN apt-get update && \
     apt-get full-upgrade --yes && \
-    apt-get install -y ca-certificates && \
+    apt-get install -y wget ca-certificates && \
     apt-get install -f && \
     apt-get autoclean --yes && \
     apt-get clean --yes
 
-COPY cloudflared /cloudflared
+RUN cd /tmp && \
+    wget https://bin.equinox.io/c/VdrWdbjqyF/cloudflared-stable-linux-amd64.tgz && \
+    tar -C / -zxf cloudflared-stable-linux-amd64.tgz
 COPY config.yaml /config.yaml
 
 EXPOSE 53/tcp

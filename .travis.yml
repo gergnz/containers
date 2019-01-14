@@ -1,9 +1,0 @@
-sudo: required
-
-services:
-  - docker
-
-jobs:
-  include:
-    - stage: deploy
-      script: bash ./build.sh
